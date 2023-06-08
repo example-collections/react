@@ -16,9 +16,10 @@ function ReactQuery() {
     "posts",
     fetchPosts,
     {
-      refetchOnWindowFocus: true,
-      staleTime: 1000,
-      cacheTime: 6000,
+      refetchInterval: 5000, // 5초마다 쿼리를 다시 실행
+      refetchOnWindowFocus: true, // 윈도우 포커스 될 때마다 새로 fetch
+      staleTime: 1000, // 데이터가 fresh -> stale 상태로 변경되는데 걸리는 시간
+      cacheTime: 6000, // 캐시에 유지되는 데이터의 유효 시간을 설정
     }
   );
 
