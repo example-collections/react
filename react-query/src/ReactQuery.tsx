@@ -56,9 +56,16 @@ function ReactQuery() {
         },
         body: JSON.stringify(newPost),
       });
+      if (!response.ok) {
+        console.log(response);
+        throw new Error("API 요청에 실패했습니다.");
+      }
       return response.json();
     },
     {
+      onError: (error) => {
+        console.log("API 요청 실패:", error);
+      },
       onSuccess: () => {
         queryClient.invalidateQueries("posts");
       },
